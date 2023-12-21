@@ -1,83 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Channel Partner Feedback</title>
-    <style>
-        .step {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Dragón Vegano | The Game</title>
 </head>
+
 <body>
-    <div id="step1" class="step">
-        <h2>Step 1: General Information</h2>
-        <!-- Include relevant input fields for general information -->
-        <button onclick="nextStep()">Next</button>
+
+  <div id="canvas-wrap">
+    <!-- Aquí va el canvas -->
+    <div id="start-screen" class="overlay">
+
+      <h1 id="game-title"><span>el</span>DragónVegano</h1>
+  
+      <i class="fas fa-info-circle icon fa-2x"></i>
+
+      <div class="start-text">
+        <p class="press-space">press space bar to fly</p>
+      </div>
+
+      <div id="text-info" class="show-hide">
+        <ul class="list">
+          <li class="list-item">Fly pressing the space bar</li>
+          <li class="list-item">Try to eat vegetables</li>
+          <li class="list-item">You're a vegan dragon, so do not eat meat</li>
+          <li class="list-item">Meat: living chickens, bacon and rocket roasted chicken</li>
+          <li class="list-item">Press Z to pause the game</li>
+        </ul>
+      </div>
+
     </div>
 
-    <div id="step2" class="step">
-        <h2>Step 2: Experience with Products</h2>
-        <!-- Include relevant input fields for product experience -->
-        <button onclick="prevStep()">Previous</button>
-        <button onclick="nextStep()">Next</button>
+    <div id="stop-screen" class="overlay show-hide">
+      <div class="final-result">
+        <ul class="list">
+          <li class="list-item">You have flown <span id="distance"></span> meters</li>
+          <li class="list-item">You have eaten <span id="broccolis"></span> broccolis</li>
+        </ul>
+
+        <button id="fly-again" class="btn second">fly again</button>
+
+      </div>
     </div>
 
-    <div id="step3" class="step">
-        <h2>Step 3: Provide Feedback</h2>
-        <label for="feedback">Your Feedback:</label>
-        <textarea id="feedback" rows="4" cols="50"></textarea>
-        <button onclick="prevStep()">Previous</button>
-        <button onclick="submitFeedback()">Submit</button>
-    </div>
+  </div>
 
-    <script>
-        let currentStep = 1;
-        const totalSteps = 3;
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+  <script src="js/broccoli.js"></script>
+  <script src="js/steak.js"></script>
+  <script src="js/shadow.js"></script>
+  <script src="js/character.js"></script>
+  <script src="js/traps.js"></script>
+  <script src="js/chickens.js"></script>
+  <script src="js/backgrounds.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
 
-        function showStep(stepNumber) {
-            for (let i = 1; i <= totalSteps; i++) {
-                const step = document.getElementById(`step${i}`);
-                if (i === stepNumber) {
-                    step.style.display = 'block';
-                } else {
-                    step.style.display = 'none';
-                }
-            }
-        }
-
-        function nextStep() {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-            }
-        }
-
-        function prevStep() {
-            if (currentStep > 1) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        }
-
-        function submitFeedback() {
-            // Retrieve feedback from the textarea
-            const feedback = document.getElementById('feedback').value;
-            
-            // You can send the feedback data to your server for further processing
-            // For simplicity, we'll just log it to the console here
-            console.log('Feedback submitted:', feedback);
-
-            // Optionally, you can reset the form or redirect the user to a thank you page
-            // Reset the form example:
-            // document.getElementById('feedback').value = '';
-            // currentStep = 1;
-            // showStep(currentStep);
-        }
-
-        // Display the initial step
-        showStep(currentStep);
-    </script>
 </body>
+
 </html>
